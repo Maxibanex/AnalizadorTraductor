@@ -24,25 +24,25 @@ espacio=[ ,\t,\r]+
 ( "\"" ) {lexeme=yytext(); return Comillas;}
 
 /* Tipos de datos */
-( byte | int | char | long | float | double ) {lexeme=yytext(); return T_dato;}
+( byte | entero | caracter | largo | decimal | doble ) {lexeme=yytext(); return T_dato;}
 
 /* Tipo de dato String */
-( String ) {lexeme=yytext(); return Cadena;}
+( Cadena ) {lexeme=yytext(); return Cadena;}
 
 /* Palabra reservada If */
-( if ) {lexeme=yytext(); return If;}
+( si ) {lexeme=yytext(); return If;}
 
 /* Palabra reservada Else */
-( else ) {lexeme=yytext(); return Else;}
+( sino ) {lexeme=yytext(); return Else;}
 
 /* Palabra reservada Do */
-( do ) {lexeme=yytext(); return Do;}
+( hacer ) {lexeme=yytext(); return Do;}
 
 /* Palabra reservada While */
-( while ) {lexeme=yytext(); return While;}
+( mientras ) {lexeme=yytext(); return While;}
 
 /* Palabra reservada For */
-( for ) {lexeme=yytext(); return For;}
+( para ) {lexeme=yytext(); return For;}
 
 /* Operador Igual */
 ( "=" ) {lexeme=yytext(); return Igual;}
@@ -72,7 +72,7 @@ espacio=[ ,\t,\r]+
 ( "++" | "--" ) {lexeme = yytext(); return Op_incremento;}
 
 /*Operadores Booleanos*/
-(true | false)      {lexeme = yytext(); return Op_booleano;}
+(verdad | mentira)      {lexeme = yytext(); return Op_booleano;}
 
 /* Parentesis de apertura */
 ( "(" ) {lexeme=yytext(); return Parentesis_a;}
@@ -93,7 +93,7 @@ espacio=[ ,\t,\r]+
 ( "]" ) {lexeme = yytext(); return Corchete_c;}
 
 /* Marcador de inicio de algoritmo */
-( "main" ) {lexeme=yytext(); return Main;}
+( "principal" ) {lexeme=yytext(); return Main;}
 
 /* Punto y coma */
 ( ";" ) {lexeme=yytext(); return P_coma;}

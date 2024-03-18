@@ -30,28 +30,28 @@ espacio=[ ,\t,\r,\n]+
 ( "\"" ) {return new Symbol(sym.Comillas, yychar, yyline, yytext());}
 
 /* Tipos de datos */
-( byte | char | long | float | double ) {return new Symbol(sym.T_dato, yychar, yyline, yytext());}
+( byte | caracter | largo | decimal | doble ) {return new Symbol(sym.T_dato, yychar, yyline, yytext());}
 
 /* Tipo de dato Int (Para el main) */
-( "int" ) {return new Symbol(sym.Int, yychar, yyline, yytext());}
+( "entero" ) {return new Symbol(sym.Int, yychar, yyline, yytext());}
 
 /* Tipo de dato String */
-( String ) {return new Symbol(sym.Cadena, yychar, yyline, yytext());}
+( Cadena ) {return new Symbol(sym.Cadena, yychar, yyline, yytext());}
 
 /* Palabra reservada If */
-( if ) {return new Symbol(sym.If, yychar, yyline, yytext());}
+( si ) {return new Symbol(sym.If, yychar, yyline, yytext());}
 
 /* Palabra reservada Else */
-( else ) {return new Symbol(sym.Else, yychar, yyline, yytext());}
+( sino ) {return new Symbol(sym.Else, yychar, yyline, yytext());}
 
 /* Palabra reservada Do */
-( do ) {return new Symbol(sym.Do, yychar, yyline, yytext());}
+( hacer ) {return new Symbol(sym.Do, yychar, yyline, yytext());}
 
 /* Palabra reservada While */
-( while ) {return new Symbol(sym.While, yychar, yyline, yytext());}
+( mientras ) {return new Symbol(sym.While, yychar, yyline, yytext());}
 
 /* Palabra reservada For */
-( for ) {return new Symbol(sym.For, yychar, yyline, yytext());}
+( para ) {return new Symbol(sym.For, yychar, yyline, yytext());}
 
 /* Operador Igual */
 ( "=" ) {return new Symbol(sym.Igual, yychar, yyline, yytext());}
@@ -81,7 +81,7 @@ espacio=[ ,\t,\r,\n]+
 ( "++" | "--" ) {return new Symbol(sym.Op_incremento, yychar, yyline, yytext());}
 
 /*Operadores Booleanos*/
-( true | false ) {return new Symbol(sym.Op_booleano, yychar, yyline, yytext());}
+( verdad | mentira ) {return new Symbol(sym.Op_booleano, yychar, yyline, yytext());}
 
 /* Parentesis de apertura */
 ( "(" ) {return new Symbol(sym.Parentesis_a, yychar, yyline, yytext());}
@@ -102,7 +102,7 @@ espacio=[ ,\t,\r,\n]+
 ( "]" ) {return new Symbol(sym.Corchete_c, yychar, yyline, yytext());}
 
 /* Marcador de inicio de algoritmo */
-( "main" ) {return new Symbol(sym.Main, yychar, yyline, yytext());}
+( "principal" ) {return new Symbol(sym.Main, yychar, yyline, yytext());}
 
 /* Punto y coma */
 ( ";" ) {return new Symbol(sym.P_coma, yychar, yyline, yytext());}

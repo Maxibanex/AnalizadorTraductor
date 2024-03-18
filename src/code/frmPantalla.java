@@ -30,6 +30,7 @@ public class frmPantalla extends javax.swing.JFrame {
      */
     
     private String erroresSemanticos = "";
+    private String traducido = "";
     private String ambitoActual = ""; //para almacenar el ambito actual "solo funciona con main"
     HashMap<String, String> variablesDeclaradas = new HashMap<>(); //Para almacenar las variables declaradas
     
@@ -38,6 +39,120 @@ public class frmPantalla extends javax.swing.JFrame {
         this.setLocationRelativeTo(null);
     }
     
+    
+    public void Traductor2() throws IOException{
+        String expr = (String) txtResultado.getText();
+        Lexer lexer = new Lexer(new StringReader(expr));
+        
+        
+        traducido = "";
+        
+        while (true) {
+            Tokens token = lexer.yylex();
+            if (token == null) {
+                txtCodigoTraducido.setText(traducido);
+                return;
+            }
+            switch (token) {
+                case Linea:
+                    traducido += "\n";
+                    break;
+                case Comillas:
+                    traducido += lexer.lexeme + " ";
+                    break;
+                case Cadena:
+                    traducido += "String ";
+                    break;
+                case T_dato:
+                    traducido += lexer.lexeme + " ";
+                    break;
+                case If:
+                    traducido += "if ";
+                    break;
+                case Else:
+                    traducido += "else ";
+                    break;
+                case Do:
+                    traducido += "do ";
+                    break;
+                case While:
+                    traducido += "while ";;
+                    break;
+                case For:
+                    traducido += "for ";;
+                    break;
+                case Igual:
+                    traducido += lexer.lexeme + " ";
+                    break;
+                case Suma:
+                    traducido += lexer.lexeme + " ";
+                    break;
+                case Resta:
+                    traducido += lexer.lexeme + " ";
+                    break;
+                case Multiplicacion:
+                    traducido += lexer.lexeme + " ";
+                    break;
+                case Division:
+                    traducido += lexer.lexeme + " ";
+                    break;
+                case Op_logico:
+                    traducido += lexer.lexeme + " ";
+                    break;
+                case Op_incremento:
+                    traducido += lexer.lexeme + " ";
+                    break;
+                case Op_relacional:
+                    traducido += lexer.lexeme + " ";
+                    break;
+                case Op_atribucion:
+                    traducido += lexer.lexeme + " ";
+                    break;
+                case Op_booleano:
+                    traducido += lexer.lexeme + " ";
+                    break;
+                case Parentesis_a:
+                    traducido += lexer.lexeme;
+                    break;
+                case Parentesis_c:
+                    traducido += lexer.lexeme + " ";
+                    break;
+                case Llave_a:
+                    traducido += lexer.lexeme + " ";
+                    break;
+                case Llave_c:
+                    traducido += lexer.lexeme + " ";
+                    break;
+                case Corchete_a:
+                    traducido += lexer.lexeme + " ";
+                    break;
+                case Corchete_c:
+                    traducido += lexer.lexeme + " ";
+                    break;
+                case Main:
+                    traducido += "main ";
+                    break;
+                case P_coma:
+                    traducido += lexer.lexeme + " ";
+                    break;
+                case Identificador:
+                    traducido += lexer.lexeme + " ";
+                    break;
+                case Numero:
+                    traducido += lexer.lexeme + " ";
+                    break;
+                case NumeroDecimal:
+                    traducido += lexer.lexeme + " ";
+                    break;
+                default:
+                    break;
+            }
+        }
+        
+    }
+    
+    
+        
     
     public void Traductor() throws IOException{
         String codigofinal = "";
@@ -757,7 +872,7 @@ public class frmPantalla extends javax.swing.JFrame {
             if (sintactico.toLowerCase().contains(palabra.toLowerCase()) || semantico.toLowerCase().contains(palabra.toLowerCase())){
                 txtCodigoTraducido.setText("Hay errores en el codigo, no es posible traducir");
             }else{
-                Traductor();
+                Traductor2();
             }
         } catch (IOException ex) {
             Logger.getLogger(frmPantalla.class.getName()).log(Level.SEVERE, null, ex);
